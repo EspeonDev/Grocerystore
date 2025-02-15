@@ -2,8 +2,25 @@ import 'package:flutter/material.dart';
 
 import '/widgets/card_widget.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+
+  void onSelectedTab(int index) {
+    if (_selectedIndex == index) return;
+    setState(() {
+      _selectedIndex = index;
+    });
+    if (_selectedIndex == 1) {
+      Navigator.of(context).pushNamed('/explore');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +35,7 @@ class HomeScreen extends StatelessWidget {
             iconSize: 32,
             selectedItemColor: const Color(0xFF53B175),
             unselectedItemColor: Colors.black,
-            currentIndex: 0,
+            currentIndex: _selectedIndex,
             type: BottomNavigationBarType.fixed,
             items: const [
               BottomNavigationBarItem(
@@ -33,6 +50,7 @@ class HomeScreen extends StatelessWidget {
               BottomNavigationBarItem(
                   icon: Icon(Icons.person_2_outlined), label: "Account"),
             ],
+            onTap: onSelectedTab,
             selectedLabelStyle: const TextStyle(
               fontSize: 12, // Размер шрифта для выбранного элемента
               fontWeight: FontWeight.bold, // Жирный шрифт
