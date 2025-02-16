@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_store/models/product_model.dart';
 
 class CardWidget extends StatelessWidget {
-  const CardWidget({
-    super.key,
-  });
+  final Product product;
+
+  const CardWidget({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -29,36 +30,36 @@ class CardWidget extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 19),
-              child: Image.asset('assets/images/bananas.jpg'),
+              child: Image.asset(
+                product.imgPath,
+                height: 80,
+                fit: BoxFit.cover,
+              ),
             ),
-            const SizedBox(
-              height: 15,
-            ),
-            const Text(
-              'Organic Bananas',
-              style: TextStyle(
+            const SizedBox(height: 15),
+            Text(
+              product.name,
+              style: const TextStyle(
                 fontFamily: 'Gilroy',
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Text(
-              '7pcs, Priceg',
-              style: TextStyle(
+            Text(
+              '${product.quantity} pcs, Price',
+              style: const TextStyle(
                 fontFamily: 'Gilroy',
                 color: Color(0xFF7C7C7C),
                 fontWeight: FontWeight.w500,
               ),
             ),
-            const SizedBox(
-              height: 25,
-            ),
+            const SizedBox(height: 25),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  r'$4.99',
-                  style: TextStyle(
+                Text(
+                  '\$${product.price.toStringAsFixed(2)}',
+                  style: const TextStyle(
                     fontSize: 18,
                     fontFamily: 'Gilroy',
                     fontWeight: FontWeight.bold,

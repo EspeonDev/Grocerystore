@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_store/models/product_model.dart';
 
 import '/widgets/card_widget.dart';
 
@@ -28,41 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.white,
-        bottomNavigationBar: SizedBox(
-          height: 76,
-          child: BottomNavigationBar(
-            backgroundColor: Colors.white,
-            iconSize: 32,
-            selectedItemColor: const Color(0xFF53B175),
-            unselectedItemColor: Colors.black,
-            currentIndex: _selectedIndex,
-            type: BottomNavigationBarType.fixed,
-            items: const [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.shopping_basket_outlined), label: "Shop"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.manage_search_rounded), label: "Explore"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.shopping_cart_outlined), label: "Cart"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.favorite_outline_rounded),
-                  label: "Favourite"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.person_2_outlined), label: "Account"),
-            ],
-            onTap: onSelectedTab,
-            selectedLabelStyle: const TextStyle(
-              fontSize: 12, // Размер шрифта для выбранного элемента
-              fontWeight: FontWeight.bold, // Жирный шрифт
-              fontFamily: 'Gilroy', // Укажите ваш шрифт здесь
-            ),
-            unselectedLabelStyle: const TextStyle(
-              fontSize: 12, // Размер шрифта для невыбранных элементов
-              fontWeight: FontWeight.normal, // Обычный шрифт
-              fontFamily: 'Gilroy', // Укажите ваш шрифт здесь
-            ),
-          ),
-        ),
         body: SingleChildScrollView(
           child: SafeArea(
             child: Padding(
@@ -101,39 +67,33 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(
                     height: 19,
                   ),
-                  const SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        SizedBox(width: 15),
-                        CardWidget(),
-                        SizedBox(width: 15),
-                        CardWidget(),
-                        SizedBox(width: 15),
-                        CardWidget(),
-                        SizedBox(width: 15),
-                        CardWidget(),
-                        SizedBox(width: 15),
-                      ],
+                  SizedBox(
+                    height: 250,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: products.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: CardWidget(product: products[index]),
+                        );
+                      },
                     ),
                   ),
                   const SizedBox(height: 30),
                   const SectionTitle(title: 'Best Selling'),
                   const SizedBox(height: 30),
-                  const SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        SizedBox(width: 15),
-                        CardWidget(),
-                        SizedBox(width: 15),
-                        CardWidget(),
-                        SizedBox(width: 15),
-                        CardWidget(),
-                        SizedBox(width: 15),
-                        CardWidget(),
-                        SizedBox(width: 15),
-                      ],
+                  SizedBox(
+                    height: 250,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: products.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: CardWidget(product: products[index]),
+                        );
+                      },
                     ),
                   ),
                   const SizedBox(height: 30),
@@ -197,20 +157,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   const SizedBox(height: 15),
-                  const SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        SizedBox(width: 15),
-                        CardWidget(),
-                        SizedBox(width: 15),
-                        CardWidget(),
-                        SizedBox(width: 15),
-                        CardWidget(),
-                        SizedBox(width: 15),
-                        CardWidget(),
-                        SizedBox(width: 15),
-                      ],
+                  SizedBox(
+                    height: 250,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: products.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: CardWidget(product: products[index]),
+                        );
+                      },
                     ),
                   ),
                 ],
