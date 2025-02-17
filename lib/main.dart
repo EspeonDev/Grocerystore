@@ -15,7 +15,6 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(debugShowCheckedModeBanner: false, routes: {
       '/': (context) => MainScreen(),
-      '/product_detail': (context) => ProductDetail(),
       '/explore': (context) => ExploreScreen(),
     });
   }

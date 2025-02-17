@@ -15,7 +15,6 @@ class _MainScreenState extends State<MainScreen> {
   static List<Widget> pages = <Widget>[
     HomeScreen(),
     ExploreScreen(),
-    ProductDetail(),
   ];
   void onSelectedTab(int index) {
     if (_selectedIndex == index) return;

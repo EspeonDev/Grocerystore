@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_store/models/product_model.dart';
+import 'package:grocery_store/screens/product_detail.dart';
 
 class CardWidget extends StatelessWidget {
   final Product product;
@@ -65,19 +66,33 @@ class CardWidget extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(17),
-                    color: const Color(0xFF53B175),
+                GestureDetector(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(17),
+                      color: const Color(0xFF53B175),
+                    ),
+                    width: 45,
+                    height: 45,
+                    child: const Icon(
+                      Icons.add,
+                      color: Colors.white,
+                      size: 26,
+                      weight: 700,
+                    ),
                   ),
-                  width: 45,
-                  height: 45,
-                  child: const Icon(
-                    Icons.add,
-                    color: Colors.white,
-                    size: 26,
-                    weight: 700,
-                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProductDetail(
+                          title: product.name,
+                          price: product.price,
+                          imagePath: product.imgPath,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
