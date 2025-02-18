@@ -4,7 +4,7 @@ import 'package:grocery_store/models/product_model.dart';
 import '/widgets/card_widget.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

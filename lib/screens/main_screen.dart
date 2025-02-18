@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_store/screens/explore_screen.dart';
 import 'package:grocery_store/screens/home_screen.dart';
-import 'package:grocery_store/screens/product_detail.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -13,8 +12,8 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   static List<Widget> pages = <Widget>[
-    HomeScreen(),
-    ExploreScreen(),
+    const HomeScreen(),
+    const ExploreScreen(),
   ];
   void onSelectedTab(int index) {
     if (_selectedIndex == index) return;

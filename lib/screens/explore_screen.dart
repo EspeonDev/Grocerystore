@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_store/screens/product_category_screen.dart';
 
 class ExploreScreen extends StatelessWidget {
   const ExploreScreen({super.key});
@@ -37,7 +38,7 @@ class ExploreScreen extends StatelessWidget {
                     fillColor: const Color(0xFFF2F3F2),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 const Row(
@@ -87,7 +88,7 @@ class ExploreScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 const Row(
                   children: [
                     CategoryWdiget(
@@ -125,31 +126,41 @@ class CategoryWdiget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          border: Border.all(
-            width: 1,
-            color: color.withOpacity(0.7),
-          ),
-          color: color.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(18)),
-      height: 190,
-      width: 175,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Image.asset(imgPath),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontFamily: 'Gilroy',
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+    return GestureDetector(
+      child: Container(
+        decoration: BoxDecoration(
+            border: Border.all(
+              width: 1,
+              color: color.withOpacity(0.7),
             ),
-          )
-        ],
+            color: color.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(18)),
+        height: 190,
+        width: 175,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Image.asset(imgPath),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontFamily: 'Gilroy',
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            )
+          ],
+        ),
       ),
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ProductCategoryScreen(
+                      title: title,
+                    )));
+      },
     );
   }
 }

@@ -6,7 +6,6 @@ class CardWidget extends StatelessWidget {
   final Product product;
 
   const CardWidget({super.key, required this.product});
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -54,47 +53,49 @@ class CardWidget extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            const SizedBox(height: 25),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  '\$${product.price.toStringAsFixed(2)}',
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontFamily: 'Gilroy',
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                GestureDetector(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(17),
-                      color: const Color(0xFF53B175),
-                    ),
-                    width: 45,
-                    height: 45,
-                    child: const Icon(
-                      Icons.add,
-                      color: Colors.white,
-                      size: 26,
-                      weight: 700,
+            const SizedBox(height: 10),
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '\$${product.price.toStringAsFixed(2)}',
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontFamily: 'Gilroy',
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ProductDetail(
-                          title: product.name,
-                          price: product.price,
-                          imagePath: product.imgPath,
-                        ),
+                  GestureDetector(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(17),
+                        color: const Color(0xFF53B175),
                       ),
-                    );
-                  },
-                ),
-              ],
+                      width: 45,
+                      height: 45,
+                      child: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 26,
+                        weight: 700,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductDetail(
+                            title: product.name,
+                            price: product.price,
+                            imagePath: product.imgPath,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
           ],
         ),

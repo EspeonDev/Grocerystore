@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ProductDetail extends StatelessWidget {
+class ProductDetail extends StatefulWidget {
   const ProductDetail({
     super.key,
     required this.title,
@@ -11,6 +11,27 @@ class ProductDetail extends StatelessWidget {
   final String title;
   final double price;
   final String imagePath;
+
+  @override
+  State<ProductDetail> createState() => _ProductDetailState();
+}
+
+class _ProductDetailState extends State<ProductDetail> {
+  int counter = 1;
+
+  void increment() {
+    setState(() {
+      counter = counter + 1;
+    });
+  }
+
+  void decrement() {
+    setState(() {
+      if (counter > 1) {
+        counter = counter - 1;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +48,7 @@ class ProductDetail extends StatelessWidget {
             ),
             flexibleSpace: FlexibleSpaceBar(
               background: Image.asset(
-                imagePath,
+                widget.imagePath,
                 fit: BoxFit.cover,
               ),
             ),
@@ -42,7 +63,7 @@ class ProductDetail extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        title,
+                        widget.title,
                         style: const TextStyle(
                           fontFamily: 'Gilroy',
                           fontSize: 24,
@@ -68,7 +89,9 @@ class ProductDetail extends StatelessWidget {
                         children: [
                           IconButton(
                             icon: const Icon(Icons.remove, color: Colors.grey),
-                            onPressed: () {},
+                            onPressed: () {
+                              decrement();
+                            },
                           ),
                           Container(
                             width: 45,
@@ -77,10 +100,10 @@ class ProductDetail extends StatelessWidget {
                               borderRadius: BorderRadius.circular(17),
                               border: Border.all(width: 1, color: Colors.black),
                             ),
-                            child: const Center(
+                            child: Center(
                               child: Text(
-                                '1',
-                                style: TextStyle(
+                                '$counter',
+                                style: const TextStyle(
                                   fontFamily: 'Gilroy',
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -91,12 +114,14 @@ class ProductDetail extends StatelessWidget {
                           IconButton(
                             icon:
                                 const Icon(Icons.add, color: Color(0xFF53B175)),
-                            onPressed: () {},
+                            onPressed: () {
+                              increment();
+                            },
                           ),
                         ],
                       ),
                       Text(
-                        '\$$price',
+                        '\$${(widget.price * counter).toStringAsFixed(2)}',
                         style: const TextStyle(
                           fontFamily: 'Gilroy',
                           fontSize: 24,
