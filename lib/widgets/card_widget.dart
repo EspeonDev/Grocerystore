@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_store/constants/text_styles.dart';
 import 'package:grocery_store/models/product_model.dart';
 import 'package:grocery_store/screens/product_detail.dart';
 
@@ -60,11 +61,7 @@ class CardWidget extends StatelessWidget {
                 children: [
                   Text(
                     '\$${product.price.toStringAsFixed(2)}',
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontFamily: 'Gilroy',
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: AppTextStyles().firstStyle,
                   ),
                   GestureDetector(
                     child: Container(
@@ -86,9 +83,7 @@ class CardWidget extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => ProductDetail(
-                            title: product.name,
-                            price: product.price,
-                            imagePath: product.imgPath,
+                            product: product,
                           ),
                         ),
                       );

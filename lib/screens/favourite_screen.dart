@@ -3,10 +3,12 @@ import 'package:grocery_store/main.dart';
 import 'package:grocery_store/models/product_model.dart';
 
 class FavouriteScreen extends StatelessWidget {
-  const FavouriteScreen({super.key});
+  FavouriteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final favouriteProducts =
+        products.where((product) => product.isFavourite).toList();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -28,9 +30,9 @@ class FavouriteScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView.builder(
-                  itemCount: products.length,
+                  itemCount: favouriteProducts.length,
                   itemBuilder: (context, index) {
-                    final product = products[index];
+                    final product = favouriteProducts[index];
 
                     return Column(
                       children: [

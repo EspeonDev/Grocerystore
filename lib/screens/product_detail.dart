@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_store/constants/text_styles.dart';
+import 'package:grocery_store/models/product_model.dart';
 
 class ProductDetail extends StatefulWidget {
-  const ProductDetail({
+  ProductDetail({
     super.key,
-    required this.title,
-    required this.price,
-    required this.imagePath,
+    required this.product,
   });
 
-  final String title;
-  final double price;
-  final String imagePath;
+  final Product product;
 
   @override
   State<ProductDetail> createState() => _ProductDetailState();
@@ -33,6 +31,12 @@ class _ProductDetailState extends State<ProductDetail> {
     });
   }
 
+  void favouriteToggle() {
+    setState(() {
+      widget.product.isFavourite = !widget.product.isFavourite;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +52,7 @@ class _ProductDetailState extends State<ProductDetail> {
             ),
             flexibleSpace: FlexibleSpaceBar(
               background: Image.asset(
-                widget.imagePath,
+                widget.product.imgPath,
                 fit: BoxFit.cover,
               ),
             ),
@@ -63,18 +67,21 @@ class _ProductDetailState extends State<ProductDetail> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        widget.title,
+                        widget.product.name,
                         style: const TextStyle(
                           fontFamily: 'Gilroy',
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const Icon(
-                        Icons.favorite_border_rounded,
-                        size: 24,
-                        color: Color(0xFF7C7C7C),
-                      ),
+                      IconButton(
+                        icon: Icon(Icons.favorite_border_rounded),
+                        iconSize: 24,
+                        color: widget.product.isFavourite
+                            ? Colors.red
+                            : Color(0xFF7C7C7C),
+                        onPressed: favouriteToggle,
+                      )
                     ],
                   ),
                   const Text(
@@ -121,7 +128,7 @@ class _ProductDetailState extends State<ProductDetail> {
                         ],
                       ),
                       Text(
-                        '\$${(widget.price * counter).toStringAsFixed(2)}',
+                        '\$${(widget.product.price * counter).toStringAsFixed(2)}',
                         style: const TextStyle(
                           fontFamily: 'Gilroy',
                           fontSize: 24,
@@ -159,7 +166,7 @@ class _ProductDetailState extends State<ProductDetail> {
                     height: 67,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF53B175),
+                        backgroundColor: AppColor().mainGreenAppColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(19),
                         ),
