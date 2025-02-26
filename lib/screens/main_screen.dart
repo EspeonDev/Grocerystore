@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_store/screens/cart_screen.dart';
 import 'package:grocery_store/screens/explore_screen.dart';
 import 'package:grocery_store/screens/home_screen.dart';
 
@@ -16,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
   static List<Widget> pages = <Widget>[
     HomeScreen(),
     const ExploreScreen(),
-    FavouriteScreen(),
+    CartScreen(),
     FavouriteScreen(),
   ];
   void onSelectedTab(int index) {
