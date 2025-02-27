@@ -25,3 +25,5 @@ List<Product> products = [
   Product(6, 'Broiler Chicken', 4.99, 1, 'assets/images/chicken.png',
       r'Meat & Fish', false),
 ];
+
+List<Product> cart = [];

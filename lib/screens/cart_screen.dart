@@ -21,7 +21,7 @@ class CartScreen extends StatelessWidget {
             Divider(),
             Expanded(
               child: ListView.builder(
-                  itemCount: products.length,
+                  itemCount: cart.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.all(16.0),
@@ -32,7 +32,9 @@ class CartScreen extends StatelessWidget {
                             children: [
                               Container(
                                 child: Center(
-                                    child: Image.asset(products.first.imgPath)),
+                                    child: Image.asset(
+                                  cart[index].imgPath,
+                                )),
                               ),
                               SizedBox(width: 20),
                               Expanded(
@@ -52,7 +54,7 @@ class CartScreen extends StatelessWidget {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                'Bell Pepper Red',
+                                                cart[index].name,
                                                 style: TextStyle(
                                                     fontFamily: 'Gilroy',
                                                     fontSize: 16,
@@ -66,7 +68,9 @@ class CartScreen extends StatelessWidget {
                                             padding: const EdgeInsets.only(
                                                 bottom: 7),
                                             child: IconButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                cart.removeAt(index);
+                                              },
                                               icon: Icon(Icons.close),
                                             ),
                                           ),
@@ -113,7 +117,7 @@ class CartScreen extends StatelessWidget {
                                           Padding(
                                             padding: const EdgeInsets.only(
                                                 right: 10),
-                                            child: Text(r'$4.99'),
+                                            child: Text('${cart[index].price}'),
                                           )
                                         ],
                                       )

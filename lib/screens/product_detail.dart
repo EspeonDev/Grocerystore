@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_store/constants/text_styles.dart';
 import 'package:grocery_store/models/product_model.dart';
+import 'package:grocery_store/screens/cart_screen.dart';
 
 class ProductDetail extends StatefulWidget {
   ProductDetail({
@@ -171,7 +172,9 @@ class _ProductDetailState extends State<ProductDetail> {
                           borderRadius: BorderRadius.circular(19),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        cart.add(widget.product);
+                      },
                       child: const Text(
                         'Add To Basket',
                         style: TextStyle(
