@@ -93,7 +93,9 @@ class FavouriteScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(19),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      cart.addAll(favouriteProducts);
+                    },
                     child: const Text(
                       'Add To Basket',
                       style: TextStyle(

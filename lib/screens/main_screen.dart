@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_store/screens/account_screen.dart';
 import 'package:grocery_store/screens/cart_screen.dart';
 import 'package:grocery_store/screens/explore_screen.dart';
 import 'package:grocery_store/screens/home_screen.dart';
@@ -19,6 +20,7 @@ class _MainScreenState extends State<MainScreen> {
     const ExploreScreen(),
     CartScreen(),
     FavouriteScreen(),
+    AccountScreen(),
   ];
   void onSelectedTab(int index) {
     if (_selectedIndex == index) return;
