@@ -19,9 +19,10 @@ class ProductCategoryScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: SizedBox(
             child: products.where((product) => product.tag == title).isEmpty
-                ? Center(child: Text('No products found'))
+                ? const Center(child: Text('No products found'))
                 : GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       crossAxisSpacing: 15,
                       mainAxisSpacing: 15,

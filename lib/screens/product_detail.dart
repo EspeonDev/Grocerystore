@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_store/constants/text_styles.dart';
 import 'package:grocery_store/models/product_model.dart';
-import 'package:grocery_store/screens/cart_screen.dart';
 
 class ProductDetail extends StatefulWidget {
-  ProductDetail({
+  const ProductDetail({
     super.key,
     required this.product,
   });
@@ -76,11 +75,11 @@ class _ProductDetailState extends State<ProductDetail> {
                         ),
                       ),
                       IconButton(
-                        icon: Icon(Icons.favorite_border_rounded),
+                        icon: const Icon(Icons.favorite_border_rounded),
                         iconSize: 24,
                         color: widget.product.isFavourite
                             ? Colors.red
-                            : Color(0xFF7C7C7C),
+                            : const Color(0xFF7C7C7C),
                         onPressed: favouriteToggle,
                       )
                     ],

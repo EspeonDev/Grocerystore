@@ -6,107 +6,90 @@ class ExploreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: const Center(
-              child: Text(
-            'Find Products',
-            style: TextStyle(
-              fontFamily: 'Gilroy',
-              fontWeight: FontWeight.bold,
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide.none,
+                ),
+                hintText: "Search store",
+                prefixIcon: const Icon(Icons.search),
+                filled: true,
+                fillColor: const Color(0xFFF2F3F2),
+              ),
             ),
-          )),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
-            child: Column(
+            const SizedBox(
+              height: 20,
+            ),
+            const Row(
               children: [
-                TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide.none,
-                    ),
-                    hintText: "Search store",
-                    prefixIcon: const Icon(Icons.search),
-                    filled: true,
-                    fillColor: const Color(0xFFF2F3F2),
-                  ),
+                CategoryWdiget(
+                  title: r'Frash Fruits & Vegetable',
+                  imgPath: 'assets/images/fruits_vegetables.png',
+                  color: Color(0xFF53B175),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Row(
-                  children: [
-                    CategoryWdiget(
-                      title: r'Frash Fruits & Vegetable',
-                      imgPath: 'assets/images/fruits_vegetables.png',
-                      color: Color(0xFF53B175),
-                    ),
-                    SizedBox(width: 15),
-                    CategoryWdiget(
-                      title: r'Cooking Oil & Ghee',
-                      imgPath: 'assets/images/oil.png',
-                      color: Color(0xFFF8A44C),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 15),
-                const Row(
-                  children: [
-                    CategoryWdiget(
-                      title: r'Meat & Fish',
-                      imgPath: 'assets/images/meatfish.png',
-                      color: Color(0xFFF7A593),
-                    ),
-                    SizedBox(width: 15),
-                    CategoryWdiget(
-                      title: r'Bakery & Snacks',
-                      imgPath: 'assets/images/bakery.png',
-                      color: Color(0xFFD3B0E0),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 15),
-                const Row(
-                  children: [
-                    CategoryWdiget(
-                      title: r'Dairy & Eggs',
-                      imgPath: 'assets/images/dairy.png',
-                      color: Color.fromARGB(255, 214, 198, 143),
-                    ),
-                    SizedBox(width: 15),
-                    CategoryWdiget(
-                      title: r'Beverages',
-                      imgPath: 'assets/images/beverages.png',
-                      color: Color(0xFFB7DFF5),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 15),
-                const Row(
-                  children: [
-                    CategoryWdiget(
-                      title: r'Frash Fruits & Vegetable',
-                      imgPath: 'assets/images/fruits_vegetables.png',
-                      color: Color(0xFF53B175),
-                    ),
-                    SizedBox(width: 15),
-                    CategoryWdiget(
-                      title: r'Cooking Oil & Ghee',
-                      imgPath: 'assets/images/oil.png',
-                      color: Color(0xFFF8A44C),
-                    ),
-                  ],
+                SizedBox(width: 15),
+                CategoryWdiget(
+                  title: r'Cooking Oil & Ghee',
+                  imgPath: 'assets/images/oil.png',
+                  color: Color(0xFFF8A44C),
                 ),
               ],
             ),
-          ),
+            const SizedBox(height: 15),
+            const Row(
+              children: [
+                CategoryWdiget(
+                  title: r'Meat & Fish',
+                  imgPath: 'assets/images/meatfish.png',
+                  color: Color(0xFFF7A593),
+                ),
+                SizedBox(width: 15),
+                CategoryWdiget(
+                  title: r'Bakery & Snacks',
+                  imgPath: 'assets/images/bakery.png',
+                  color: Color(0xFFD3B0E0),
+                ),
+              ],
+            ),
+            const SizedBox(height: 15),
+            const Row(
+              children: [
+                CategoryWdiget(
+                  title: r'Dairy & Eggs',
+                  imgPath: 'assets/images/dairy.png',
+                  color: Color.fromARGB(255, 214, 198, 143),
+                ),
+                SizedBox(width: 15),
+                CategoryWdiget(
+                  title: r'Beverages',
+                  imgPath: 'assets/images/beverages.png',
+                  color: Color(0xFFB7DFF5),
+                ),
+              ],
+            ),
+            const SizedBox(height: 15),
+            const Row(
+              children: [
+                CategoryWdiget(
+                  title: r'Frash Fruits & Vegetable',
+                  imgPath: 'assets/images/fruits_vegetables.png',
+                  color: Color(0xFF53B175),
+                ),
+                SizedBox(width: 15),
+                CategoryWdiget(
+                  title: r'Cooking Oil & Ghee',
+                  imgPath: 'assets/images/oil.png',
+                  color: Color(0xFFF8A44C),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

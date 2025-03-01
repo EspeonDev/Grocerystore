@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_store/screens/explore_screen.dart';
 import 'package:grocery_store/screens/main_screen.dart';
 
 void main() {

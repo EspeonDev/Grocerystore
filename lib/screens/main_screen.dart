@@ -15,13 +15,15 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
+  final List<int> _pagesWithoutAppBar = [0, 4];
   static List<Widget> pages = <Widget>[
-    HomeScreen(),
+    const HomeScreen(),
     const ExploreScreen(),
-    CartScreen(),
-    FavouriteScreen(),
+    const CartScreen(),
+    const FavouriteScreen(),
     AccountScreen(),
   ];
+
   void onSelectedTab(int index) {
     if (_selectedIndex == index) return;
     setState(() {
@@ -34,6 +36,19 @@ class _MainScreenState extends State<MainScreen> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        appBar: _pagesWithoutAppBar.contains(_selectedIndex)
+            ? null
+            : AppBar(
+                backgroundColor: Colors.white,
+                title: const Center(
+                    child: Text(
+                  'Find Products',
+                  style: TextStyle(
+                    fontFamily: 'Gilroy',
+                    fontWeight: FontWeight.bold,
+                  ),
+                )),
+              ),
         body: pages[_selectedIndex],
         backgroundColor: Colors.white,
         bottomNavigationBar: SizedBox(
